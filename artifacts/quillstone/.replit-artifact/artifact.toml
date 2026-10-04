@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Quillstone Writing Studio"
+description = "A focused long-form writing workspace for organizing manuscripts, drafting chapters, collecting research notes, tracking word goals, and staying in flow."
+version = "1.0.0"
+id = "artifacts/quillstone"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20499
+
+[services.development]
+run = "pnpm --filter @workspace/quillstone run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/quillstone", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/quillstone/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20499"
+BASE_PATH = "/"

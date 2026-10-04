@@ -68,12 +68,6 @@ catalog:
 
 autoInstallPeers: false
 
-onlyBuiltDependencies:
-  - '@swc/core'
-  - esbuild
-  - msw
-  - unrs-resolver
-
 overrides:
   # replit uses linux-x64 only, we can exclude all other platforms
   "esbuild>@esbuild/darwin-arm64": "-"
@@ -163,3 +157,6 @@ overrides:
   # Keep vulnerable transitive dependencies on patched compatible releases.
   brace-expansion: 5.0.12
   fast-uri: 3.1.8
+
+allowBuilds:
+  esbuild: true
